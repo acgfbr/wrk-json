@@ -32,9 +32,9 @@ jobs:
       - name: Build and push
         uses: docker/build-push-action@v3
         with:
+          platforms: linux/amd64,linux/arm64,linux/arm64/v8
           context: .
           file: Dockerfile
           push: ${{ github.ref_type == 'tag' }}
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
-          
